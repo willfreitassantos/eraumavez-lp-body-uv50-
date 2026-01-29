@@ -6,6 +6,55 @@ import { ExitPopup } from './ExitPopup';
 // URL do produto no Magento
 const PRODUCT_URL = 'https://www.lojaeraumavez.com.br/body-bebe-protecao-uv50-cores-variadas.html';
 
+const SOCIAL_LINKS = [
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/eraumavezmodabebe',
+    icon: (
+      <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/LojaEraUmaVez',
+    icon: (
+      <svg className="size-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+      </svg>
+    ),
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/user/CompanhiaBaby',
+    icon: (
+      <svg className="size-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.254.418-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418zM15.194 12 10 15V9l5.194 3z" clipRule="evenodd" />
+      </svg>
+    ),
+  },
+];
+
+const SocialLinks = ({ className = "" }: { className?: string }) => (
+  <div className={`flex items-center gap-4 ${className}`}>
+    {SOCIAL_LINKS.map((social) => (
+      <a
+        key={social.name}
+        href={social.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-400 hover:text-primary transition-colors hover:scale-110 transform duration-200"
+        aria-label={social.name}
+      >
+        {social.icon}
+      </a>
+    ))}
+  </div>
+);
+
 const WhatsAppFloatingButton = () => (
   <a
     href="https://wa.me/5511965436004?text=Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Body%20UV50%2B"
@@ -92,6 +141,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Logo />
           <div className="flex gap-4 items-center">
+            <SocialLinks className="hidden lg:flex mr-4 border-r border-gray-200 pr-6" />
             <div className="hidden md:flex flex-col text-right mr-4">
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Atendimento:</span>
               <span className="text-sm font-bold text-primary">(11) 96543-6004</span>
@@ -677,18 +727,22 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Logo */}
-          <div className="flex justify-center">
-            {/* Logo Oficial RGB com fundo branco - NUNCA substituir por texto */}
-            <div className="bg-white rounded-xl px-6 py-3">
-              <img
-                src="https://storage.googleapis.com/landinpage-era-uma-vez/era-uma-vez-logotipo-RGB.jpg"
-                alt="Era Uma Vez"
-                className="h-10 w-auto object-contain"
-              />
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10">
+            <SocialLinks className="text-white/60" />
+            <div className="flex justify-center">
+              {/* Logo Oficial RGB com fundo branco - NUNCA substituir por texto */}
+              <div className="bg-white rounded-xl px-6 py-3">
+                <img
+                  src="https://storage.googleapis.com/landinpage-era-uma-vez/era-uma-vez-logotipo-RGB.jpg"
+                  alt="Era Uma Vez"
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
             </div>
+            <p className="text-xs font-medium opacity-80 text-center md:text-right w-full md:w-auto">
+              © 2026 ERA UMA VEZ.<br />TODOS OS DIREITOS RESERVADOS.
+            </p>
           </div>
-          <p className="text-xs font-medium opacity-80 text-center">© 2026 ERA UMA VEZ. TODOS OS DIREITOS RESERVADOS.</p>
         </div>
       </footer>
       <WhatsAppFloatingButton />
