@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Logo, COLORS, SIZES, TESTIMONIALS, FAQ_ITEMS, TECHNICAL_SPECS, IMAGES } from './constants';
+import React, { useState, useEffect } from 'react';
+import { Logo, COLORS, SIZES, TESTIMONIALS, FAQ_ITEMS, TECHNICAL_SPECS, IMAGES, PRODUCT_IMAGES } from './constants';
 
 // URL do produto no Magento
 const PRODUCT_URL = 'https://www.lojaeraumavez.com.br/body-bebe-protecao-uv50-cores-variadas.html';
@@ -8,6 +8,23 @@ const PRODUCT_URL = 'https://www.lojaeraumavez.com.br/body-bebe-protecao-uv50-co
 const App: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState('3-6M');
   const [selectedColor, setSelectedColor] = useState(COLORS[1].hex); // Default to Red
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % PRODUCT_IMAGES.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + PRODUCT_IMAGES.length) % PRODUCT_IMAGES.length);
+  };
+
+  // Auto-play do carrossel (troca a cada 4 segundos)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % PRODUCT_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen font-sans selection:bg-accent selection:text-white">
@@ -86,15 +103,45 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Ilustração do Bebê from screenshot */}
+            {/* Carrossel de Imagens do Produto */}
             <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative z-10 w-full max-w-lg aspect-square bg-[#F2F2F2] rounded-3xl shadow-lg flex items-center justify-center overflow-hidden p-8">
-                <div className="relative z-20 animate-float w-4/5 h-auto">
-                  <img
-                    src="https://storage.googleapis.com/landinpage-era-uma-vez/crianca-body-50uv.jpg"
-                    alt="Criança com Body UV50+"
-                    className="w-full h-auto drop-shadow-2xl rounded-xl object-cover"
-                  />
+              <div className="relative z-10 w-full max-w-lg aspect-square bg-[#F2F2F2] rounded-3xl shadow-lg flex items-center justify-center overflow-hidden">
+                {/* Imagem Principal */}
+                <img
+                  src={PRODUCT_IMAGES[currentImageIndex]}
+                  alt={`Body UV50+ - Foto ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover transition-opacity duration-300"
+                />
+
+                {/* Setas de Navegação */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 size-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="Imagem anterior"
+                >
+                  <span className="material-symbols-outlined text-gray-700">chevron_left</span>
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 size-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="Próxima imagem"
+                >
+                  <span className="material-symbols-outlined text-gray-700">chevron_right</span>
+                </button>
+
+                {/* Indicadores (Dots) */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  {PRODUCT_IMAGES.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`size-2.5 rounded-full transition-all ${index === currentImageIndex
+                        ? 'bg-secondary w-6'
+                        : 'bg-white/70 hover:bg-white'
+                        }`}
+                      aria-label={`Ir para imagem ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
               {/* Decorative Circle */}
@@ -173,6 +220,166 @@ const App: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">Hipoalergênico</h3>
               <p className="text-gray-500 text-sm">Certificado OEKO-TEX®, livre de substâncias tóxicas.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Por que UV50+? - Seção Educacional */}
+        <section className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Entenda a Proteção</span>
+              <h2 className="text-3xl md:text-4xl font-display font-black mb-4">Por que UV50+ é essencial?</h2>
+              <p className="text-gray-500 max-w-2xl mx-auto">A pele do bebê é até 5x mais fina que a do adulto, tornando-a extremamente vulnerável aos raios UV</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-gradient-to-br from-primary to-blue-700 text-white p-6 rounded-3xl">
+                <div className="text-5xl font-black mb-2">98%</div>
+                <div className="font-bold mb-2">Bloqueio UV</div>
+                <p className="text-sm opacity-80">UV50+ bloqueia 98% dos raios UVA e UVB nocivos</p>
+              </div>
+              <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                <div className="size-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                  <span className="material-symbols-outlined text-secondary !text-2xl">child_care</span>
+                </div>
+                <div className="font-bold mb-2">Pele Sensível</div>
+                <p className="text-sm text-gray-500">Bebês têm melanina limitada, oferecendo pouca proteção natural</p>
+              </div>
+              <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                <div className="size-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                  <span className="material-symbols-outlined text-accent !text-2xl">water_drop</span>
+                </div>
+                <div className="font-bold mb-2">Resistente à Água</div>
+                <p className="text-sm text-gray-500">Proteção mantida mesmo após contato com água ou suor</p>
+              </div>
+              <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                <div className="size-12 bg-brandGreen/10 rounded-full flex items-center justify-center mb-4">
+                  <span className="material-symbols-outlined text-brandGreen !text-2xl">autorenew</span>
+                </div>
+                <div className="font-bold mb-2">Proteção Permanente</div>
+                <p className="text-sm text-gray-500">Não sai nas lavagens - proteção para toda a vida útil</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparativo Visual */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="inline-block bg-secondary/10 text-secondary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Compare</span>
+              <h2 className="text-3xl md:text-4xl font-display font-black">Protetor Solar vs. Body UV50+</h2>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+              <div className="grid grid-cols-3 bg-gray-100 font-bold text-center">
+                <div className="p-4">Aspecto</div>
+                <div className="p-4 bg-gray-200">Protetor Solar</div>
+                <div className="p-4 bg-primary text-white">Body UV50+</div>
+              </div>
+              {[
+                { aspect: 'Reaplicação', solar: 'A cada 2 horas', uv: 'Nunca necessária', icon: 'schedule' },
+                { aspect: 'Na água', solar: 'Perde eficácia', uv: 'Mantém 100%', icon: 'pool' },
+                { aspect: 'Pele sensível', solar: 'Pode irritar', uv: 'Hipoalergênico', icon: 'spa' },
+                { aspect: 'Aplicação', solar: 'Difícil em bebês', uv: 'Veste e pronto', icon: 'touch_app' },
+                { aspect: 'Custo mensal', solar: '~R$ 50/mês', uv: 'R$ 0 (uso contínuo)', icon: 'payments' },
+              ].map((row, i) => (
+                <div key={i} className="grid grid-cols-3 border-b border-gray-100 text-center items-center">
+                  <div className="p-4 flex items-center gap-2 justify-center font-medium">
+                    <span className="material-symbols-outlined text-gray-400 !text-lg">{row.icon}</span>
+                    {row.aspect}
+                  </div>
+                  <div className="p-4 text-gray-500">{row.solar}</div>
+                  <div className="p-4 bg-primary/5 font-bold text-primary">{row.uv}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Tecnologia do Tecido */}
+        <section className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="inline-block bg-accent/10 text-accent px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Tecnologia</span>
+                <h2 className="text-3xl md:text-4xl font-display font-black mb-6">Tecido de Alta Performance</h2>
+                <p className="text-gray-500 mb-8">Desenvolvido com tecnologia Dry-Fit para máximo conforto e proteção do seu bebê em qualquer situação.</p>
+
+                <div className="space-y-4">
+                  {[
+                    { icon: 'bolt', title: 'Secagem Ultra-Rápida', desc: 'Tecido que seca em minutos após contato com água' },
+                    { icon: 'thermostat', title: 'Controle Térmico', desc: 'Mantém o bebê fresco mesmo em dias quentes' },
+                    { icon: 'verified', title: 'Costuras Reforçadas', desc: 'Maior durabilidade para acompanhar o crescimento' },
+                    { icon: 'wash', title: 'Fácil Lavagem', desc: 'Pode lavar na máquina sem perder a proteção UV' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-4 items-start">
+                      <div className="size-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="material-symbols-outlined text-primary !text-xl">{item.icon}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold">{item.title}</h4>
+                        <p className="text-sm text-gray-500">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-3xl p-8">
+                <h3 className="font-bold text-xl mb-6 text-center">Composição do Tecido</h3>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="font-medium">Poliamida</span>
+                      <span className="text-primary font-bold">80%</span>
+                    </div>
+                    <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-primary rounded-full" style={{ width: '80%' }}></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="font-medium">Elastano</span>
+                      <span className="text-secondary font-bold">20%</span>
+                    </div>
+                    <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-secondary rounded-full" style={{ width: '20%' }}></div>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 mt-6 text-center">Tecido premium com toque suave e flexibilidade para o conforto do bebê</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Certificações */}
+        <section className="py-16 bg-primary text-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-2xl font-display font-black text-center mb-8">Certificações e Segurança</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div className="bg-white/10 p-6 rounded-2xl">
+                <span className="material-symbols-outlined !text-4xl mb-3">verified</span>
+                <div className="font-bold">FPU 50+</div>
+                <p className="text-xs opacity-80 mt-1">Fator de Proteção Ultravioleta</p>
+              </div>
+              <div className="bg-white/10 p-6 rounded-2xl">
+                <span className="material-symbols-outlined !text-4xl mb-3">eco</span>
+                <div className="font-bold">OEKO-TEX®</div>
+                <p className="text-xs opacity-80 mt-1">Livre de substâncias nocivas</p>
+              </div>
+              <div className="bg-white/10 p-6 rounded-2xl">
+                <span className="material-symbols-outlined !text-4xl mb-3">dermatology</span>
+                <div className="font-bold">Dermatológico</div>
+                <p className="text-xs opacity-80 mt-1">Testado e aprovado</p>
+              </div>
+              <div className="bg-white/10 p-6 rounded-2xl">
+                <span className="material-symbols-outlined !text-4xl mb-3">water_drop</span>
+                <div className="font-bold">Anti-Cloro</div>
+                <p className="text-xs opacity-80 mt-1">Resistente à piscina</p>
+              </div>
             </div>
           </div>
         </section>
@@ -261,6 +468,45 @@ const App: React.FC = () => {
                 <img src={IMAGES.paymentVisa} className="h-6" alt="Visa" />
                 <img src={IMAGES.paymentMaster} className="h-6" alt="Master" />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Dicas de Uso */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="inline-block bg-brandGreen/10 text-brandGreen px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Dicas</span>
+              <h2 className="text-3xl md:text-4xl font-display font-black">Quando usar o Body UV50+?</h2>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: 'beach_access', title: 'Praia', desc: 'Proteção total na areia e no mar', bg: 'bg-blue-50', color: 'text-blue-600' },
+                { icon: 'pool', title: 'Piscina', desc: 'Resistente ao cloro e água', bg: 'bg-cyan-50', color: 'text-cyan-600' },
+                { icon: 'park', title: 'Parque', desc: 'Passeios ao ar livre protegidos', bg: 'bg-green-50', color: 'text-green-600' },
+                { icon: 'wb_sunny', title: 'Dia a Dia', desc: 'Use em qualquer atividade', bg: 'bg-yellow-50', color: 'text-yellow-600' },
+              ].map((item, i) => (
+                <div key={i} className={`${item.bg} p-6 rounded-3xl text-center`}>
+                  <div className={`size-16 ${item.bg} rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-lg`}>
+                    <span className={`material-symbols-outlined ${item.color} !text-3xl`}>{item.icon}</span>
+                  </div>
+                  <h4 className="font-bold mb-1">{item.title}</h4>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 bg-white rounded-3xl p-8 border border-gray-100">
+              <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
+                <span className="material-symbols-outlined text-accent">tips_and_updates</span>
+                Dica Importante
+              </h3>
+              <p className="text-gray-600">
+                O Body UV50+ protege apenas as áreas cobertas pelo tecido. Para proteção completa, aplique protetor solar no
+                <strong> rosto, orelhas, mãos e pés</strong> do bebê. Evite exposição direta ao sol entre 10h e 16h,
+                quando os raios UV são mais intensos.
+              </p>
             </div>
           </div>
         </section>

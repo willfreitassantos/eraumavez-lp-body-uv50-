@@ -48,6 +48,31 @@ export const FAQ_ITEMS: FAQItem[] = [
     question: 'O tecido causa alergia?',
     answer: 'Nossas peças são hipoalergênicas e possuem certificação internacional OEKO-TEX®, garantindo a ausência de substâncias nocivas à pele sensível do bebê.',
   },
+  {
+    id: 4,
+    question: 'Posso usar o body na praia, piscina e dia a dia?',
+    answer: 'Sim! O Body UV50+ é versátil e pode ser usado em qualquer situação: praia, piscina, parque, passeios ao ar livre e até no dia a dia. A proteção funciona tanto na água quanto fora dela.',
+  },
+  {
+    id: 5,
+    question: 'Preciso usar protetor solar junto com o body?',
+    answer: 'O body protege as áreas cobertas. Recomendamos aplicar protetor solar apenas nas áreas expostas (rosto, mãos e pés) para proteção completa.',
+  },
+  {
+    id: 6,
+    question: 'Como lavar e cuidar da peça?',
+    answer: 'Lave na máquina em ciclo delicado com água fria. Evite alvejantes e amaciantes. Seque à sombra. Não passe ferro. Seguindo essas instruções, a peça mantém a proteção UV por toda sua vida útil.',
+  },
+  {
+    id: 7,
+    question: 'Qual tamanho devo escolher?',
+    answer: 'Recomendamos escolher pelo peso e medidas do bebê: 0-3M (até 6kg), 3-6M (6-8kg), 6-9M (8-10kg), 12-18M (10-12kg), 2 Anos (12-14kg). Em caso de dúvida, escolha um tamanho maior para maior durabilidade.',
+  },
+  {
+    id: 8,
+    question: 'Por que UV50+ é melhor que protetor solar?',
+    answer: 'O protetor solar precisa ser reaplicado a cada 2 horas, pode irritar a pele sensível do bebê e perde eficácia na água. A roupa UV50+ oferece proteção contínua, é hipoalergênica e funciona 100% mesmo molhada.',
+  },
 ];
 
 export const TECHNICAL_SPECS: TechnicalSpec[] = [
@@ -64,9 +89,9 @@ export const LOGO_URLS = {
 };
 
 export const Logo = () => (
-  <img 
-    src={LOGO_URLS.rgb} 
-    alt="Era Uma Vez" 
+  <img
+    src={LOGO_URLS.rgb}
+    alt="Era Uma Vez"
     className="h-10 md:h-12 w-auto object-contain"
   />
 );
@@ -74,7 +99,15 @@ export const Logo = () => (
 export const IMAGES = {
   paymentVisa: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg',
   paymentMaster: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg',
-  paymentPix: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_Pix_Brasil.png',
-  // Using a known high-quality baby illustration placeholder that looks like the sitting baby in red
-  babyHero: 'https://img.freepik.com/free-vector/hand-drawn-baby-illustration_23-2148967073.jpg?t=st=1740000000~exp=1740003600~hmac=62d64f0e6e9b9e6c4a8b7c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5'
+  paymentPix: 'https://storage.googleapis.com/landinpage-era-uma-vez/Logo_Pix_Brasil.png',
 };
+
+// Imagens do produto para o carrossel
+export const PRODUCT_IMAGES = [
+  'https://storage.googleapis.com/landinpage-era-uma-vez/crianca-body-50uv.jpg',
+  'https://storage.googleapis.com/landinpage-era-uma-vez/crianca2-body-50uv.jpg',
+  'https://storage.googleapis.com/landinpage-era-uma-vez/crianca3-body-50uv.jpg',
+  'https://storage.googleapis.com/landinpage-era-uma-vez/crianca4-body-50uv.jpg',
+  'https://storage.googleapis.com/landinpage-era-uma-vez/crianca5-body-50uv.jpg',
+  'https://storage.googleapis.com/landinpage-era-uma-vez/crianca6-body-50uv.jpg',
+];
