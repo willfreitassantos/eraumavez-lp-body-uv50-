@@ -14,10 +14,10 @@
         theme: {
           extend: {
             colors: {
-              primary: "#0E3C91", // Azul
-              secondary: "#FF2829", // Vermelho
-              accent: "#FFB902", // Amarelo
-              brandGreen: "#94CC56", // Verde
+              primary: "#0E3C91",
+              secondary: "#FF2829",
+              accent: "#FFB902",
+              brandGreen: "#94CC56",
               "background-light": "#fdfdfd",
             },
             fontFamily: {
@@ -48,7 +48,6 @@
         animation: float 4s ease-in-out infinite;
       }
       
-      /* Multi-colored logo letters effect */
       .logo-e { color: #0E3C91; }
       .logo-r { color: #FF2829; }
       .logo-a { color: #FFB902; }
@@ -64,13 +63,15 @@
   "imports": {
     "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/"
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-background-light text-[#1a1a1a] antialiased">
     <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
