@@ -6,7 +6,7 @@ export const COLORS = [
   { name: 'Azul Real', hex: '#0E3C91' },
   { name: 'Vermelho Sol', hex: '#FF2829' },
   { name: 'Amarelo Alegria', hex: '#FFB902' },
-  { name: 'Verde Natureza', hex: '#94CC56' },
+  { name: 'Verde Natureza', hex: '#94C856' },
 ];
 
 export const SIZES = ['0-3M', '3-6M', '6-9M', '12-18M', '2 Anos'];
@@ -57,18 +57,18 @@ export const TECHNICAL_SPECS: TechnicalSpec[] = [
   { characteristic: 'Certificação', detail: 'ARPANSA (Padrão Australiano de Proteção Solar)' },
 ];
 
+// Logo oficial RGB da marca Era Uma Vez
+export const LOGO_URLS = {
+  rgb: 'https://storage.googleapis.com/landinpage-era-uma-vez/era-uma-vez-logotipo-RGB.jpg',
+  png: 'https://storage.googleapis.com/landinpage-era-uma-vez/era-uma-vez-logotipo-PNG.jpg',
+};
+
 export const Logo = () => (
-  <div className="flex items-center font-display font-black text-2xl md:text-3xl tracking-tighter">
-    <span className="logo-e">E</span>
-    <span className="logo-r">r</span>
-    <span className="logo-a">a</span>
-    <span className="logo-u ml-1">U</span>
-    <span className="logo-m">m</span>
-    <span className="logo-a2">a</span>
-    <span className="logo-v ml-1">V</span>
-    <span className="logo-e2">e</span>
-    <span className="logo-z">z</span>
-  </div>
+  <img 
+    src={LOGO_URLS.rgb} 
+    alt="Era Uma Vez" 
+    className="h-10 md:h-12 w-auto object-contain"
+  />
 );
 
 export const IMAGES = {
