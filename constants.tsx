@@ -99,7 +99,7 @@ export const Logo = () => (
 export const IMAGES = {
   paymentVisa: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg',
   paymentMaster: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg',
-  paymentPix: 'https://storage.googleapis.com/landinpage-era-uma-vez/Logo_Pix_Brasil.png',
+  paymentPix: 'https://storage.googleapis.com/landinpage-era-uma-vez/pix-logo.png',
 };
 
 // Imagens do produto para o carrossel

@@ -568,8 +568,62 @@ const App: React.FC = () => {
         </section>
       </main>
 
-      <footer className="bg-primary text-white py-12 px-4 text-center">
-        <div className="max-w-7xl mx-auto space-y-6">
+      <footer className="bg-primary text-white py-12 px-4">
+        <div className="max-w-7xl mx-auto space-y-8">
+          {/* Trust Seals - Selos de Confiança */}
+          <div className="bg-white rounded-2xl p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              {/* Segurança */}
+              <div>
+                <p className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">Segurança</p>
+                <div className="flex items-center justify-center gap-4">
+                  <div className="flex items-center gap-1">
+                    <span className="text-gray-700 font-bold text-lg">st</span>
+                    <span className="material-symbols-outlined text-green-500 !text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                    <span className="text-gray-600 text-sm font-medium">Google</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="bg-yellow-400 rounded-full size-8 flex items-center justify-center text-xs font-black text-gray-800">e</div>
+                    <span className="text-[10px] text-gray-500 font-bold">ÓTIMA</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Formas de Pagamento */}
+              <div>
+                <p className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">Formas de Pagamento</p>
+                <div className="flex items-center justify-center gap-3 flex-wrap">
+                  <img src={IMAGES.paymentVisa} className="h-6" alt="Visa" />
+                  <img src={IMAGES.paymentMaster} className="h-6" alt="Mastercard" />
+                  <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded">AMEX</span>
+                  <span className="border border-gray-300 rounded-full size-6 flex items-center justify-center text-xs font-bold text-gray-600">D</span>
+                  <span className="text-yellow-500 font-black text-sm">eLO</span>
+                  <span className="text-red-600 text-[10px] font-bold">Hipercard</span>
+                  <img src={IMAGES.paymentPix} className="h-5" alt="Pix" />
+                </div>
+              </div>
+
+              {/* Credibilidade */}
+              <div>
+                <p className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">Credibilidade</p>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-xl px-4 py-2 flex items-center gap-2">
+                    <span className="text-2xl font-black">4.9</span>
+                    <div className="flex flex-col items-start">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="material-symbols-outlined !text-xs text-yellow-400" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                        ))}
+                      </div>
+                      <span className="text-[9px] opacity-80">LOJA CONFIÁVEL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Logo */}
           <div className="flex justify-center">
             {/* Logo Oficial RGB com fundo branco - NUNCA substituir por texto */}
             <div className="bg-white rounded-xl px-6 py-3">
@@ -580,7 +634,7 @@ const App: React.FC = () => {
               />
             </div>
           </div>
-          <p className="text-xs font-medium opacity-80">© 2026 ERA UMA VEZ. TODOS OS DIREITOS RESERVADOS.</p>
+          <p className="text-xs font-medium opacity-80 text-center">© 2026 ERA UMA VEZ. TODOS OS DIREITOS RESERVADOS.</p>
         </div>
       </footer>
     </div>
