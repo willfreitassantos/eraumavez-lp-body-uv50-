@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { Logo, COLORS, SIZES, TESTIMONIALS, FAQ_ITEMS, TECHNICAL_SPECS, IMAGES } from './constants';
 
+// URL do produto no Magento
+const PRODUCT_URL = 'https://www.lojaeraumavez.com.br/body-bebe-protecao-uv50-cores-variadas.html';
+
 const App: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState('3-6M');
   const [selectedColor, setSelectedColor] = useState(COLORS[1].hex); // Default to Red
@@ -61,10 +64,15 @@ const App: React.FC = () => {
                   </div>
                   <span className="text-gray-600"><strong className="text-gray-900">500+ mamães</strong> já protegem seus bebês</span>
                 </div>
-                <button className="group relative w-full md:w-auto px-10 py-5 bg-secondary hover:bg-[#E02425] text-white rounded-2xl font-display font-bold text-xl transition-all shadow-xl shadow-secondary/30 active:scale-95 flex items-center justify-center gap-3">
+                <a
+                  href={PRODUCT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative w-full md:w-auto px-10 py-5 bg-secondary hover:bg-[#E02425] text-white rounded-2xl font-display font-bold text-xl transition-all shadow-xl shadow-secondary/30 active:scale-95 flex items-center justify-center gap-3 no-underline"
+                >
                   Quero Proteger Meu Bebê
                   <span className="material-symbols-outlined">arrow_forward</span>
-                </button>
+                </a>
                 <div className="flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-1 text-brandGreen font-bold">
                     <span className="material-symbols-outlined !text-lg">verified</span>
@@ -83,9 +91,9 @@ const App: React.FC = () => {
               <div className="relative z-10 w-full max-w-lg aspect-square bg-[#F2F2F2] rounded-3xl shadow-lg flex items-center justify-center overflow-hidden p-8">
                 <div className="relative z-20 animate-float w-4/5 h-auto">
                   <img
-                    src="https://img.freepik.com/free-vector/hand-drawn-baby-illustration_23-2148967073.jpg"
-                    alt="Bebê com Body UV50+"
-                    className="w-full h-auto drop-shadow-2xl rounded-xl"
+                    src="https://storage.googleapis.com/landinpage-era-uma-vez/crianca-body-50uv.jpg"
+                    alt="Criança com Body UV50+"
+                    className="w-full h-auto drop-shadow-2xl rounded-xl object-cover"
                   />
                 </div>
               </div>
@@ -239,10 +247,15 @@ const App: React.FC = () => {
                   <span className="text-3xl font-black text-secondary">R$ 59,90</span>
                 </div>
               </div>
-              <button className="w-full py-5 bg-secondary text-white rounded-2xl font-bold text-lg hover:bg-[#E02425] transition-all shadow-xl shadow-secondary/30 flex items-center justify-center gap-2">
+              <a
+                href={PRODUCT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-5 bg-secondary text-white rounded-2xl font-bold text-lg hover:bg-[#E02425] transition-all shadow-xl shadow-secondary/30 flex items-center justify-center gap-2 no-underline"
+              >
                 <span className="material-symbols-outlined">shopping_cart</span>
                 Garantir Meu Body UV50+
-              </button>
+              </a>
               <div className="flex justify-center gap-4 opacity-50">
                 <img src={IMAGES.paymentPix} className="h-6" alt="Pix" />
                 <img src={IMAGES.paymentVisa} className="h-6" alt="Visa" />
@@ -281,10 +294,15 @@ const App: React.FC = () => {
               Junte-se a elas e aproveite dias ensolarados sem preocupação!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="px-10 py-5 bg-secondary hover:bg-[#E02425] text-white rounded-2xl font-display font-bold text-xl transition-all shadow-xl shadow-black/30 flex items-center gap-3">
+              <a
+                href={PRODUCT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-5 bg-secondary hover:bg-[#E02425] text-white rounded-2xl font-display font-bold text-xl transition-all shadow-xl shadow-black/30 flex items-center gap-3 no-underline"
+              >
                 Quero Proteger Meu Bebê
                 <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
+              </a>
             </div>
             <div className="flex justify-center gap-6 mt-6 text-sm opacity-80">
               <div className="flex items-center gap-2">
