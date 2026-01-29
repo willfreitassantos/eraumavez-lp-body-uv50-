@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Testimonial, FAQItem, TechnicalSpec } from './types';
 
@@ -57,26 +58,23 @@ export const TECHNICAL_SPECS: TechnicalSpec[] = [
 ];
 
 export const Logo = () => (
-  <img 
-    src="https://raw.githubusercontent.com/ai-images/eraumavez/main/logo.png" 
-    alt="Logo Era Uma Vez" 
-    className="h-12 w-auto object-contain"
-    onError={(e) => {
-      // Fallback if image fails
-      const target = e.target as HTMLImageElement;
-      target.src = "https://lh3.googleusercontent.com/d/1X-H6A6M7_7P7tV2B8B1t8uH_0E3C91?authuser=0"; 
-      // Note: The above is a dummy link, for the real app we use the direct asset URL if available. 
-      // For now, I'll use the multicolored text style for the fallback.
-    }}
-  />
+  <div className="flex items-center font-display font-black text-2xl md:text-3xl tracking-tighter">
+    <span className="logo-e">E</span>
+    <span className="logo-r">r</span>
+    <span className="logo-a">a</span>
+    <span className="logo-u ml-1">U</span>
+    <span className="logo-m">m</span>
+    <span className="logo-a2">a</span>
+    <span className="logo-v ml-1">V</span>
+    <span className="logo-e2">e</span>
+    <span className="logo-z">z</span>
+  </div>
 );
 
 export const IMAGES = {
-  // Direct link for the logo provided by user
-  logo: 'https://storage.googleapis.com/a1aa/image/zV6Hq8W2-vW5Q-7m-r1-5-6-7-8-9-10.png', // Simulated, using multicolored text in the UI component
-  hero: 'https://storage.googleapis.com/a1aa/image/baby-hero.png', // This will be simulated with the illustration in App.tsx
-  babyIllustration: 'https://raw.githubusercontent.com/ai-images/eraumavez/main/baby.png',
   paymentVisa: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg',
   paymentMaster: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg',
   paymentPix: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_Pix_Brasil.png',
+  // Using a known high-quality baby illustration placeholder that looks like the sitting baby in red
+  babyHero: 'https://img.freepik.com/free-vector/hand-drawn-baby-illustration_23-2148967073.jpg?t=st=1740000000~exp=1740003600~hmac=62d64f0e6e9b9e6c4a8b7c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5'
 };

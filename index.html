@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -13,11 +14,11 @@
         theme: {
           extend: {
             colors: {
-              primary: "#0E3C91", // Azul Real
+              primary: "#0E3C91", // Azul
               secondary: "#FF2829", // Vermelho
               accent: "#FFB902", // Amarelo
               brandGreen: "#94CC56", // Verde
-              "background-light": "#fefefe",
+              "background-light": "#fdfdfd",
             },
             fontFamily: {
               sans: ["Inter", "sans-serif"],
@@ -46,18 +47,30 @@
       .animate-float {
         animation: float 4s ease-in-out infinite;
       }
+      
+      /* Multi-colored logo letters effect */
+      .logo-e { color: #0E3C91; }
+      .logo-r { color: #FF2829; }
+      .logo-a { color: #FFB902; }
+      .logo-u { color: #94CC56; }
+      .logo-m { color: #0E3C91; }
+      .logo-a2 { color: #FF2829; }
+      .logo-v { color: #FFB902; }
+      .logo-e2 { color: #94CC56; }
+      .logo-z { color: #0E3C91; }
     </style>
-    <script type="importmap">
-    {
-      "imports": {
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "react": "https://esm.sh/react@^19.2.4",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-      }
-    }
-    </script>
-  </head>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+</head>
   <body class="bg-background-light text-[#1a1a1a] antialiased">
     <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
   </body>
 </html>
